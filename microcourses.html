@@ -1,0 +1,1266 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Microcourses | R Square Education</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon1.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/aos.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/icofont.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        if (localStorage.getItem("theme-color") === "dark" || (!(localStorage.getItem("theme-color") in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("is_dark");
+        }
+        if (localStorage.getItem("theme-color") === "light") {
+            document.documentElement.classList.remove("is_dark");
+        } 
+    </script>
+
+    <!-- Microcourses Custom Styles -->
+    <style>
+        .microcourses-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .microcourses-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .microcourses-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .microcourses-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .class-tabs-container {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .class-tabs {
+            display: inline-flex;
+            gap: 0;
+            border-radius: 50px;
+            background: #e9ecef;
+            padding: 5px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .class-tab {
+            padding: 15px 30px;
+            background: transparent;
+            border: none;
+            border-radius: 45px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #495057;
+            min-width: 120px;
+        }
+
+        .class-tab.active {
+            background: #007bff;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+        }
+
+        .class-tab:hover:not(.active) {
+            background: rgba(0,123,255,0.1);
+        }
+
+        .course-grid {
+            display: none;
+        }
+
+        .course-grid.active {
+            display: block;
+        }
+
+        .microcourse-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            margin-bottom: 30px;
+            position: relative;
+            border: 1px solid #e9ecef;
+        }
+
+        .microcourse-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .card-header-section {
+            height: 250px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .card-header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .card-title-overlay {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .bg-physics { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .bg-math { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .bg-chemistry { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .bg-biology { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .bg-general { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #007bff;
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 3;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: #007bff;
+            color: white;
+        }
+
+        .certificate-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 3;
+        }
+
+        .certificate-badge i {
+            font-size: 24px;
+            color: #28a745;
+        }
+
+        .card-content {
+            padding: 30px;
+        }
+
+        .class-label {
+            display: inline-block;
+            background: #dc3545;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .course-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .course-stats {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+
+        .course-stats li {
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #4a5568;
+            display: flex;
+            align-items: center;
+        }
+
+        .course-stats li::before {
+            content: "•";
+            color: #007bff;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .course-stats strong {
+            color: #2d3748;
+        }
+
+        .pricing-section {
+            margin-bottom: 25px;
+            padding: 15px 0;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #28a745;
+        }
+
+        .original-price {
+            font-size: 18px;
+            color: #a0aec0;
+            text-decoration: line-through;
+        }
+
+        .course-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+        }
+
+        .view-details-btn {
+            background: transparent;
+            border: 2px solid #007bff;
+            color: #007bff;
+        }
+
+        .view-details-btn:hover {
+            background: #007bff;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .buy-now-btn {
+            background: #007bff;
+            color: white;
+            border: 2px solid #007bff;
+        }
+
+        .buy-now-btn:hover {
+            background: #0056b3;
+            border-color: #0056b3;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border-radius: 20px 20px 0 0;
+            border-bottom: none;
+            padding: 25px 30px;
+        }
+
+        .modal-title {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .course-info-section {
+            margin-bottom: 25px;
+        }
+
+        .course-info-section h6 {
+            color: #007bff;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 16px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .course-info-section ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .course-info-section li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #4a5568;
+        }
+
+        .course-info-section li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .instructor-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #007bff;
+        }
+
+        .instructor-card strong {
+            color: #007bff;
+            font-size: 16px;
+        }
+
+        .form-control {
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            padding: 15px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+        }
+
+        .selected-course-info {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 5px solid #007bff;
+        }
+
+        .selected-course-info h6 {
+            color: #007bff;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .microcourses-hero h1 {
+                font-size: 2rem;
+            }
+
+            .class-tabs {
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .class-tab {
+                padding: 12px 20px;
+                font-size: 14px;
+                min-width: 100px;
+            }
+
+            .course-actions {
+                flex-direction: column;
+            }
+
+            .card-header-section {
+                height: 200px;
+            }
+
+            .course-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body class="body__wrapper">
+    <!-- pre loader area start -->
+    <div id="back__preloader">
+        <div id="back__circle_loader"></div>
+        <div class="back__loader_logo">
+            <img loading="lazy" src="img/pre.png" alt="Preload">
+        </div>
+    </div>
+    <!-- pre loader area end -->
+
+    <!-- Dark/Light area start -->
+    <div class="mode_switcher my_switcher">
+        <button id="light--to-dark-button" class="light align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon dark__mode" viewBox="0 0 512 512">
+                <path d="M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z"
+                    fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon light__mode" viewBox="0 0 512 512">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"
+                    d="M256 48v48M256 416v48M403.08 108.92l-33.94 33.94M142.86 369.14l-33.94 33.94M464 256h-48M96 256H48M403.08 403.08l-33.94-33.94M142.86 142.86l-33.94-33.94" />
+                <circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" />
+            </svg>
+            <span class="light__mode">Light</span>
+            <span class="dark__mode">Dark</span>
+        </button>
+    </div>
+    <!-- Dark/Light area end -->
+
+    <main class="main_wrapper overflow-hidden">
+        <!-- topbar__section__start -->
+        <div class="topbararea topbararea--2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="topbar__left">
+                            <ul>
+                                <li>Call Us: +91 73580 40969</li>
+                                <li>- Mail Us: info@rsquareeducation.in</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="topbar__right">
+                            <div class="topbar__icon">
+                                <i class="icofont-location-pin"></i>
+                            </div>
+                            <div class="topbar__text">
+                                <p>9/5, Lakshmipuram Road, Opposite to Head Post Office, Tiruvallur - 602001</p>
+                            </div>
+                            <div class="topbar__list">
+                                <ul>
+                                    <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                    <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                    <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                    <li><a href="#"><i class="icofont-youtube-play"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- topbar__section__end -->
+
+        <!-- header section start -->
+        <header>
+            <div class="headerarea headerarea__2 header__sticky header__area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-md-6">
+                            <div class="headerarea__left">
+                                <div class="headerarea__left__logo">
+                                    <a href="index.html">
+                                        <img loading="lazy" src="img/logo/logo_without_bg.png" alt="logo"
+                                            style="max-width: 240px; height: auto; transition: transform 0.3s ease-in-out; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));"
+                                            onmouseover="this.style.transform='scale(1.05)'"
+                                            onmouseout="this.style.transform='scale(1)'">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 col-lg-8 main_menu_wrap">
+                            <div class="headerarea__main__menu">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/index.html">Home</a></li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle">
+                                                Subjects <i class="icofont-rounded-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="/subjects/maths.html">Maths</a></li>
+                                                <li><a class="dropdown-item" href="/subjects/physics.html">Physics</a></li>
+                                                <li><a class="dropdown-item" href="/subjects/chemistry.html">Chemistry</a></li>
+                                                <li><a class="dropdown-item" href="/subjects/biology.html">Biology</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/microcourses.html" style="color: #007bff;">Microcourses</a></li>
+                                        <li><a href="/topper.html">Toppers</a></li>
+                                        <li><a href="/contact.html">Contact Us</a></li>
+                                        <li><a href="/about.html">About Us</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-6 text-right">
+                            <div class="headerarea__right__logo">
+                                <img loading="lazy" src="img/logo/stem_logo.png" alt="Other Logo" style="max-height: 50px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header section end -->
+
+        <!-- Hero Section -->
+        
+        <!-- Microcourses Section -->
+        <div class="microcourses-section">
+            <div class="container">
+                <!-- Class Selection Tabs -->
+                <div class="class-tabs-container">
+                    <div class="class-tabs">
+                        <button class="class-tab" onclick="switchClass(9)">Class 9</button>
+                        <button class="class-tab" onclick="switchClass(10)">Class 10</button>
+                        <button class="class-tab active" onclick="switchClass(11)">Class 11</button>
+                        <button class="class-tab" onclick="switchClass(12)">Class 12</button>
+                    </div>
+                </div>
+
+                <!-- Class 9 Courses -->
+                <div id="class-9" class="course-grid">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="microcourse-card">
+                                <div class="card-header-section bg-math">
+                                    <div class="card-title-overlay">Foundation Mathematics</div>
+                                    <div class="play-button">
+                                        <i class="icofont-ui-play"></i>
+                                    </div>
+                                </div>
+                                <div class="certificate-badge">
+                                    <i class="icofont-certificate-alt-1"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="class-label">Class 9</div>
+                                    <h3 class="course-title">Number Systems</h3>
+                                    <ul class="course-stats">
+                                        <li><strong>3</strong> Skill Builders</li>
+                                        <li><strong>45</strong> Concepts & Solved Videos</li>
+                                        <li><strong>6</strong> Hours of Learning</li>
+                                        <li>Certificate of Completion</li>
+                                    </ul>
+                                    <div class="pricing-section">
+                                        <div class="price-info">
+                                            <span class="current-price">Rs. 399</span>
+                                            <span class="original-price">Rs. 999</span>
+                                        </div>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="action-btn view-details-btn" onclick="showCourseDetails('Number Systems', 'Class 9')">View Details</button>
+                                        <button class="action-btn buy-now-btn" onclick="openRegistration('Number Systems - Class 9')">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Class 10 Courses -->
+                <div id="class-10" class="course-grid">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="microcourse-card">
+                                <div class="card-header-section bg-general">
+                                    <div class="card-title-overlay">Algebra Fundamentals</div>
+                                    <div class="play-button">
+                                        <i class="icofont-ui-play"></i>
+                                    </div>
+                                </div>
+                                <div class="certificate-badge">
+                                    <i class="icofont-certificate-alt-1"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="class-label">Class 10</div>
+                                    <h3 class="course-title">Quadratic Equations</h3>
+                                    <ul class="course-stats">
+                                        <li><strong>4</strong> Skill Builders</li>
+                                        <li><strong>52</strong> Concepts & Solved Videos</li>
+                                        <li><strong>7</strong> Hours of Learning</li>
+                                        <li>Certificate of Completion</li>
+                                    </ul>
+                                    <div class="pricing-section">
+                                        <div class="price-info">
+                                            <span class="current-price">Rs. 449</span>
+                                            <span class="original-price">Rs. 1100</span>
+                                        </div>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="action-btn view-details-btn" onclick="showCourseDetails('Quadratic Equations', 'Class 10')">View Details</button>
+                                        <button class="action-btn buy-now-btn" onclick="openRegistration('Quadratic Equations - Class 10')">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Class 11 Courses (Default Active) -->
+                <div id="class-11" class="course-grid active">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up">
+                            <div class="microcourse-card">
+                                <div class="card-header-section bg-physics">
+                                    <div class="card-title-overlay">Physics Fundamentals</div>
+                                    <div class="play-button">
+                                        <i class="icofont-ui-play"></i>
+                                    </div>
+                                </div>
+                                <div class="certificate-badge">
+                                    <i class="icofont-certificate-alt-1"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="class-label">Class 11</div>
+                                    <h3 class="course-title">Units and Measurements</h3>
+                                    <ul class="course-stats">
+                                        <li><strong>4</strong> Skill Builders</li>
+                                        <li><strong>56</strong> Concepts & Solved Videos</li>
+                                        <li><strong>9</strong> Hours of Learning</li>
+                                        <li>Certificate of Completion</li>
+                                    </ul>
+                                    <div class="pricing-section">
+                                        <div class="price-info">
+                                            <span class="current-price">Rs. 499</span>
+                                            <span class="original-price">Rs. 1250</span>
+                                        </div>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="action-btn view-details-btn" onclick="showCourseDetails('Units and Measurements', 'Class 11')">View Details</button>
+                                        <button class="action-btn buy-now-btn" onclick="openRegistration('Units and Measurements - Class 11')">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="100">
+                            <div class="microcourse-card">
+                                <div class="card-header-section bg-math">
+                                    <div class="card-title-overlay">Vector Mathematics</div>
+                                    <div class="play-button">
+                                        <i class="icofont-ui-play"></i>
+                                    </div>
+                                </div>
+                                <div class="certificate-badge">
+                                    <i class="icofont-certificate-alt-1"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="class-label">Class 11</div>
+                                    <h3 class="course-title">Vectors</h3>
+                                    <ul class="course-stats">
+                                        <li><strong>5</strong> Skill Builders</li>
+                                        <li><strong>80</strong> Concepts & Solved Videos</li>
+                                        <li><strong>10</strong> Hours of Learning</li>
+                                        <li>Certificate of Completion</li>
+                                    </ul>
+                                    <div class="pricing-section">
+                                        <div class="price-info">
+                                            <span class="current-price">Rs. 499</span>
+                                            <span class="original-price">Rs. 1250</span>
+                                        </div>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="action-btn view-details-btn" onclick="showCourseDetails('Vectors', 'Class 11')">View Details</button>
+                                        <button class="action-btn buy-now-btn" onclick="openRegistration('Vectors - Class 11')">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
+                            <div class="microcourse-card">
+                                <div class="card-header-section bg-chemistry">
+                                    <div class="card-title-overlay">Advanced Mathematics</div>
+                                    <div class="play-button">
+                                        <i class="icofont-ui-play"></i>
+                                    </div>
+                                </div>
+                                <div class="certificate-badge">
+                                    <i class="icofont-certificate-alt-1"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="class-label">Class 11</div>
+                                    <h3 class="course-title">Logarithms</h3>
+                                    <ul class="course-stats">
+                                        <li><strong>4</strong> Skill Builders</li>
+                                        <li><strong>76</strong> Concepts & Solved Videos</li>
+                                        <li><strong>8</strong> Hours of Learning</li>
+                                        <li>Certificate of Completion</li>
+                                    </ul>
+                                    <div class="pricing-section">
+                                        <div class="price-info">
+                                            <span class="current-price">Rs. 499</span>
+                                            <span class="original-price">Rs. 1250</span>
+                                        </div>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="action-btn view-details-btn" onclick="showCourseDetails('Logarithms', 'Class 11')">View Details</button>
+                                        <button class="action-btn buy-now-btn" onclick="openRegistration('Logarithms - Class 11')">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Class 12 Courses -->
+                <div id="class-12" class="course-grid">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="microcourse-card">
+                                <div class="card-header-section bg-biology">
+                                    <div class="card-title-overlay">Calculus Mastery</div>
+                                    <div class="play-button">
+                                        <i class="icofont-ui-play"></i>
+                                    </div>
+                                </div>
+                                <div class="certificate-badge">
+                                    <i class="icofont-certificate-alt-1"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="class-label">Class 12</div>
+                                    <h3 class="course-title">Differential Calculus</h3>
+                                    <ul class="course-stats">
+                                        <li><strong>6</strong> Skill Builders</li>
+                                        <li><strong>95</strong> Concepts & Solved Videos</li>
+                                        <li><strong>12</strong> Hours of Learning</li>
+                                        <li>Certificate of Completion</li>
+                                    </ul>
+                                    <div class="pricing-section">
+                                        <div class="price-info">
+                                            <span class="current-price">Rs. 599</span>
+                                            <span class="original-price">Rs. 1499</span>
+                                        </div>
+                                    </div>
+                                    <div class="course-actions">
+                                        <button class="action-btn view-details-btn" onclick="showCourseDetails('Differential Calculus', 'Class 12')">View Details</button>
+                                        <button class="action-btn buy-now-btn" onclick="openRegistration('Differential Calculus - Class 12')">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Course Details Modal -->
+        <div class="modal fade" id="courseDetailsModal" tabindex="-1" aria-labelledby="courseDetailsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="courseDetailsModalLabel">Course Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="courseDetailsContent">
+                            <!-- Content will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Modal -->
+        <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registrationModalLabel">Microcourse Registration</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="selected-course-info" id="selectedCourseInfo">
+                            <!-- Selected course info will be shown here -->
+                        </div>
+
+                        <form id="microcourseRegistrationForm" action="https://api.web3forms.com/submit" method="POST">
+                            <input type="hidden" name="access_key" value="1728c0e6-2318-4386-9640-a25105835b94">
+                            <input type="hidden" name="subject" value="Microcourse Registration - R Square Education">
+                            <input type="checkbox" name="botcheck" style="display:none">
+
+                            <!-- Hidden field for course name -->
+                            <input type="hidden" name="selected_microcourse" id="selectedMicrocourse">
+
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Full Name *" name="name" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" class="form-control" placeholder="Email Address *" name="email" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="tel" class="form-control" placeholder="Phone Number *" name="phone" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <textarea class="form-control" placeholder="Your Address" name="address" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg px-5 py-3" style="border-radius: 25px;">
+                                    Complete Registration <i class="icofont-long-arrow-right"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footerarea">
+            <div class="container">
+                <div class="footerarea__newsletter__wraper">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 col-sm-12" data-aos="fade-up">
+                            <div class="footerarea__text">
+                                <h3>Ready to Start Learning? <span>Join Now!</span></h3>
+                                <p>Get access to our premium microcourses and accelerate your learning.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12" data-aos="fade-up">
+                            <div class="email-box">
+                                <a href="mailto:info@rsquareeducation.in">info@rsquareeducation.in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .footerarea__newsletter__wraper {
+                        padding: 40px 0;
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        border-radius: 20px;
+                        margin-bottom: 60px;
+                    }
+
+                    .footerarea__text h3 {
+                        font-size: 32px;
+                        font-weight: 700;
+                        color: #fff;
+                        margin-bottom: 10px;
+                    }
+
+                    .footerarea__text span {
+                        color: #FFD700;
+                    }
+
+                    .footerarea__text p {
+                        font-size: 16px;
+                        color: rgba(255,255,255,0.9);
+                    }
+
+                    .email-box {
+                        background: rgba(255,255,255,0.15);
+                        backdrop-filter: blur(10px);
+                        padding: 20px 30px;
+                        border-radius: 15px;
+                        text-align: center;
+                        border: 1px solid rgba(255,255,255,0.2);
+                        transition: all 0.3s ease;
+                    }
+
+                    .email-box:hover {
+                        background: rgba(255,255,255,0.25);
+                        transform: translateY(-2px);
+                    }
+
+                    .email-box a {
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: #fff;
+                        text-decoration: none;
+                    }
+
+                    @media (max-width: 768px) {
+                        .footerarea__text {
+                            text-align: center;
+                            margin-bottom: 20px;
+                        }
+
+                        .footerarea__text h3 {
+                            font-size: 24px;
+                        }
+                    }
+                </style>
+
+                <div class="footerarea__wrapper footerarea__wrapper__2">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12" data-aos="fade-up">
+                            <div class="footerarea__inner footerarea__about__us">
+                                <div class="footerarea__heading">
+                                    <h3>About R Square Education</h3>
+                                </div>
+                                <div class="footerarea__content">
+                                    <p>At R Square Education, we redefine learning with innovative microcourses and result-driven approaches. Our commitment to conceptual learning ensures students excel in their academic journey.</p>
+                                </div>
+                                <div class="foter__bottom__text">
+                                    <div class="footer__bottom__icon">
+                                        <i class="icofont-clock-time"></i>
+                                    </div>
+                                    <div class="footer__bottom__content">
+                                        <h6>Support Hours</h6>
+                                        <span>Mon - Sun (8:00 AM - 9:00 PM)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6" data-aos="fade-up">
+                            <div class="footerarea__inner">
+                                <div class="footerarea__heading">
+                                    <h3>Quick Links</h3>
+                                </div>
+                                <div class="footerarea__list">
+                                    <ul>
+                                        <li><a href="/about.html">About Us</a></li>
+                                        <li><a href="/contact.html">Contact Us</a></li>
+                                        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                                        <li><a href="/terms.html">Terms & Conditions</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" data-aos="fade-up">
+                            <div class="footerarea__inner footerarea__padding__left">
+                                <div class="footerarea__heading">
+                                    <h3>Our Programs</h3>
+                                </div>
+                                <div class="footerarea__list">
+                                    <ul>
+                                        <li><a href="/subjects/maths.html">Mathematics</a></li>
+                                        <li><a href="/subjects/physics.html">Physics</a></li>
+                                        <li><a href="/subjects/chemistry.html">Chemistry</a></li>
+                                        <li><a href="/subjects/biology.html">Biology</a></li>
+                                        <li><a href="/microcourses.html">Microcourses</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12" data-aos="fade-up">
+                            <div class="footerarea__inner footerarea__about__us">
+                                <div class="footerarea__heading">
+                                    <h3>Contact Info</h3>
+                                </div>
+                                <div class="footerarea__content">
+                                    <p><i class="icofont-location-pin"></i> 9/5, Lakshmipuram Road, Opposite to Head Post Office, Tiruvallur - 602001</p>
+                                    <p><i class="icofont-phone"></i> +91 73580 40969</p>
+                                    <p><i class="icofont-envelope"></i> info@rsquareeducation.in</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footerarea__copyright__wrapper footerarea__copyright__wrapper__2">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="footerarea__copyright__content footerarea__copyright__content__2">
+                                <p>Copyright © <span>2025</span> by R Square Education. All Rights Reserved.</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="footerarea__icon footerarea__icon__2">
+                                <ul>
+                                    <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                    <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                    <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="icofont-instagram"></i></a></li>
+                                    <li><a href="#"><i class="icofont-youtube-play"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- JS here -->
+    <script src="js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/aos.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/back-to-top.js"></script>
+    <script src="js/magnific-popup.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // Course details data
+        const courseDetailsData = {
+            'Number Systems': {
+                topics: [
+                    'Introduction to Natural Numbers and Whole Numbers',
+                    'Understanding Integers and their Properties',
+                    'Rational Numbers and their Applications',
+                    'Irrational Numbers and Square Roots',
+                    'Real Numbers and Number Line',
+                    'Laws of Exponents and Rationalization'
+                ],
+                instructor: 'Mrs. Priya Mehta - M.Sc Mathematics, 8+ years experience in foundation mathematics',
+                prerequisites: 'Basic arithmetic operations, understanding of fractions and decimals'
+            },
+            'Quadratic Equations': {
+                topics: [
+                    'Introduction to Quadratic Equations',
+                    'Solving by Factorization Method',
+                    'Completing the Square Technique',
+                    'Using the Quadratic Formula',
+                    'Nature of Roots and Discriminant',
+                    'Real-world Applications and Word Problems'
+                ],
+                instructor: 'Dr. Suresh Patel - Ph.D Mathematics, 14+ years experience in algebra',
+                prerequisites: 'Linear equations, basic algebraic operations, factorization techniques'
+            },
+            'Units and Measurements': {
+                topics: [
+                    'Introduction to Physical Quantities and Units',
+                    'SI Base Units and Derived Units',
+                    'Dimensional Analysis and Dimensional Equations',
+                    'Significant Figures and Error Analysis',
+                    'Precision, Accuracy, and Measurement Techniques',
+                    'Applications in Physics Problem Solving'
+                ],
+                instructor: 'Dr. Rajesh Kumar - M.Sc Physics, 15+ years experience in experimental physics',
+                prerequisites: 'Basic understanding of mathematics, familiarity with algebraic operations'
+            },
+            'Vectors': {
+                topics: [
+                    'Introduction to Scalars and Vectors',
+                    'Vector Addition and Subtraction Methods',
+                    'Scalar (Dot) Product of Vectors',
+                    'Vector (Cross) Product and Applications',
+                    'Vector Components and Unit Vectors',
+                    'Applications in Physics and Engineering'
+                ],
+                instructor: 'Prof. Anita Sharma - Ph.D Physics from IIT Delhi, 12+ years experience',
+                prerequisites: 'Strong foundation in trigonometry, basic coordinate geometry knowledge'
+            },
+            'Logarithms': {
+                topics: [
+                    'Introduction to Logarithms and Properties',
+                    'Common Logarithms and Natural Logarithms',
+                    'Laws of Logarithms and Applications',
+                    'Solving Logarithmic Equations',
+                    'Logarithmic and Exponential Functions',
+                    'Real-world Applications in Science and Finance'
+                ],
+                instructor: 'Mr. Vikram Singh - M.Sc Mathematics, 10+ years experience in advanced mathematics',
+                prerequisites: 'Understanding of exponential functions, strong algebraic skills'
+            },
+            'Differential Calculus': {
+                topics: [
+                    'Limits and Continuity Concepts',
+                    'Introduction to Derivatives',
+                    'Rules of Differentiation',
+                    'Derivatives of Trigonometric Functions',
+                    'Applications: Maxima, Minima, and Rate of Change',
+                    'Curve Sketching and Optimization Problems'
+                ],
+                instructor: 'Prof. Deepak Agarwal - Ph.D Mathematics from IIT Bombay, 18+ years experience',
+                prerequisites: 'Strong algebra and trigonometry, understanding of functions and graphs'
+            }
+        };
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Class switching functionality
+        function switchClass(classNumber) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.class-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+
+            // Hide all course grids
+            document.querySelectorAll('.course-grid').forEach(grid => {
+                grid.classList.remove('active');
+            });
+
+            // Show selected class grid
+            const selectedGrid = document.getElementById(`class-${classNumber}`);
+            if (selectedGrid) {
+                selectedGrid.classList.add('active');
+            }
+        }
+
+        // Show course details modal
+        function showCourseDetails(courseName, className) {
+            const courseDetails = courseDetailsData[courseName];
+            if (!courseDetails) {
+                alert('Course details not available');
+                return;
+            }
+
+            document.getElementById('courseDetailsModalLabel').textContent = `${courseName} - ${className}`;
+
+            const content = document.getElementById('courseDetailsContent');
+            content.innerHTML = `
+                <div class="course-info-section">
+                    <h6><i class="icofont-book-alt"></i> Topics Covered</h6>
+                    <ul>
+                        ${courseDetails.topics.map(topic => `<li>${topic}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="course-info-section">
+                    <h6><i class="icofont-teacher"></i> Course Instructor</h6>
+                    <div class="instructor-card">
+                        <strong>${courseDetails.instructor}</strong>
+                    </div>
+                </div>
+
+                <div class="course-info-section">
+                    <h6><i class="icofont-list"></i> Prerequisites</h6>
+                    <p style="color: #4a5568; line-height: 1.6;">${courseDetails.prerequisites}</p>
+                </div>
+            `;
+
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('courseDetailsModal'));
+            modal.show();
+        }
+
+        // Open registration modal
+        function openRegistration(courseName) {
+            document.getElementById('selectedMicrocourse').value = courseName;
+
+            const courseInfo = document.getElementById('selectedCourseInfo');
+            courseInfo.innerHTML = `
+                <h6><i class="icofont-graduate"></i> Selected Microcourse</h6>
+                <strong style="color: #007bff; font-size: 18px;">${courseName}</strong>
+            `;
+
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
+            modal.show();
+        }
+
+        // Form submission handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('microcourseRegistrationForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    const formData = new FormData(e.target);
+                    const submitBtn = e.target.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+
+                    // Show loading state
+                    submitBtn.innerHTML = '<i class="icofont-spinner-alt-1 icofont-spin"></i> Processing...';
+                    submitBtn.disabled = true;
+
+                    fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('🎉 Registration successful! Our team will contact you soon with microcourse details and payment information.');
+                            e.target.reset();
+
+                            // Close modal
+                            const modal = bootstrap.Modal.getInstance(document.getElementById('registrationModal'));
+                            if (modal) modal.hide();
+                        } else {
+                            alert('❌ Registration failed. Please try again or contact us directly.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('⚠️ Something went wrong. Please try again later or contact us at +91 73580 40969');
+                    })
+                    .finally(() => {
+                        // Restore button state
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    });
+                });
+            }
+        });
+
+        // Theme switching functionality
+        if (localStorage.getItem("theme-color") === "dark" || (!localStorage.getItem("theme-color") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.getElementById("light--to-dark-button")?.classList.add("dark--mode");
+        }
+        if (localStorage.getItem("theme-color") === "light") {
+            document.getElementById("light--to-dark-button")?.classList.remove("dark--mode");
+        }
+    </script>
+
+</body>
+</html>

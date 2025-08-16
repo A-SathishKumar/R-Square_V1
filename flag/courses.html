@@ -1,0 +1,686 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Course Comparison - R Square Education</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon1.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/aos.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/icofont.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem("theme-color") === "dark" || (!(localStorage.getItem("theme-color") in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("is_dark");
+        }
+        if (localStorage.getItem("theme-color") === "light") {
+            document.documentElement.classList.remove("is_dark");
+        } 
+    </script>
+
+    <style>
+        .course-comparison {
+            margin: 60px 0;
+        }
+
+        .class-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 10px;
+        }
+
+        .class-tab {
+            padding: 12px 24px;
+            background: #e9ecef;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #495057;
+        }
+
+        .class-tab.active {
+            background: #007bff;
+            color: white;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            background: #f8f9fa;
+        }
+
+        .header-cell {
+            padding: 20px;
+            text-align: center;
+            font-weight: 600;
+            border-right: 1px solid #dee2e6;
+        }
+
+        .header-cell:last-child {
+            border-right: none;
+        }
+
+        .features-header {
+            background: #007bff;
+            color: white;
+            text-align: left;
+        }
+
+        .course-header {
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .live-online {
+            background: #fd7e14;
+        }
+
+        .mentored-learning {
+            background: #dc3545;
+        }
+
+        .recorded-video {
+            background: #28a745;
+        }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .feature-row:last-child {
+            border-bottom: none;
+        }
+
+        .feature-cell {
+            padding: 15px 20px;
+            border-right: 1px solid #dee2e6;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-cell:first-child {
+            text-align: left;
+            justify-content: flex-start;
+            font-weight: 500;
+        }
+
+        .feature-cell:last-child {
+            border-right: none;
+        }
+
+        .check-mark {
+            color: #28a745;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .cross-mark {
+            color: #dc3545;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .price-row {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .price-cell {
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #6c757d;
+            font-size: 14px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .view-topics {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .buy-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 80%;
+        }
+
+        .buy-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        /* Dark theme styles */
+        .is_dark .comparison-table {
+            background: #2d3748;
+        }
+
+        .is_dark .table-header {
+            background: #4a5568;
+        }
+
+        .is_dark .feature-row {
+            border-bottom: 1px solid #4a5568;
+        }
+
+        .is_dark .feature-cell {
+            border-right: 1px solid #4a5568;
+            color: #e2e8f0;
+        }
+
+        .is_dark .price-row {
+            background: #4a5568;
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+
+        .modal-header {
+            background: #007bff;
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .register__input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .register__input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+    </style>
+</head>
+
+<body class="body__wrapper">
+    <!-- pre loader area start -->
+    <div id="back__preloader">
+        <div id="back__circle_loader"></div>
+        <div class="back__loader_logo">
+            <img loading="lazy" src="img/pre.png" alt="Preload">
+        </div>
+    </div>
+    <!-- pre loader area end -->
+
+    <!-- Dark/Light area start -->
+    <div class="mode_switcher my_switcher">
+        <button id="light--to-dark-button" class="light align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon dark__mode" viewBox="0 0 512 512">
+                <path d="M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z"
+                    fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="32" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon light__mode" viewBox="0 0 512 512">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"
+                    d="M256 48v48M256 416v48M403.08 108.92l-33.94 33.94M142.86 369.14l-33.94 33.94M464 256h-48M96 256H48M403.08 403.08l-33.94-33.94M142.86 142.86l-33.94-33.94" />
+                <circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-miterlimit="10" stroke-width="32" />
+            </svg>
+            <span class="light__mode">Light</span>
+            <span class="dark__mode">Dark</span>
+        </button>
+    </div>
+    <!-- Dark/Light area end -->
+    <!-- header area start -->
+    <header>
+        <div class="headerarea headerarea__2 header__sticky header__area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-2 col-lg-2 col-md-6">
+                        <div class="headerarea__left">
+                            <div class="headerarea__left__logo">
+                                <a href="index.html">
+                                    <img loading="lazy" src="img/logo/logo_without_bg.png" alt="logo"
+                                        style="max-width: 240px; height: auto; transition: transform 0.3s ease-in-out; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));"
+                                        onmouseover="this.style.transform='scale(1.05)'"
+                                        onmouseout="this.style.transform='scale(1)'">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 main_menu_wrap">
+                        <div class="headerarea__main__menu">
+                            <nav>
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="courses.html" class="active">Courses</a></li>
+                                    <li><a href="topper.html">Toppers</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="about.html">About Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-6 text-right">
+                        <div class="headerarea__right__logo">
+                            <div class="headerarea__right__logo__content">
+                                <div class="headerarea__right__logo__img">
+                                    <img loading="lazy" src="img/logo/logo_without_bg.png" alt="logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header area end -->
+
+    <main class="main_wrapper overflow-hidden">
+        <!-- Course comparison section start -->
+        <div class="course-comparison">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section__title text-center">
+                            <h2 class="section__title__heading">Choose Your Perfect Course</h2>
+                            <p>Compare our course offerings and select the best fit for your academic needs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Class selection tabs -->
+                <div class="class-tabs">
+                    <button class="class-tab active" onclick="switchClass(9)">Class 9</button>
+                    <button class="class-tab" onclick="switchClass(10)">Class 10</button>
+                    <button class="class-tab active" onclick="switchClass(11)">Class 11</button>
+                    <button class="class-tab" onclick="switchClass(12)">Class 12</button>
+                </div>
+
+                <!-- Comparison table -->
+                <div class="comparison-table">
+                    <!-- Table header -->
+                    <div class="table-header">
+                        <div class="header-cell features-header">Features</div>
+                        <div class="header-cell live-online">
+                            <div class="course-header">LIVE Online Classes</div>
+                            <div style="font-size: 14px; margin-top: 4px;">Physics</div>
+                        </div>
+                        <div class="header-cell mentored-learning">
+                            <div class="course-header">Mentored Learning Program</div>
+                            <div style="font-size: 14px; margin-top: 4px;">Physics</div>
+                        </div>
+                        <div class="header-cell recorded-video">
+                            <div class="course-header">Recorded Video Course</div>
+                            <div style="font-size: 14px; margin-top: 4px;">Physics</div>
+                        </div>
+                    </div>
+
+                    <!-- Feature rows -->
+                    <div class="feature-row">
+                        <div class="feature-cell">Live Online Class by Expert Teachers</div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                        <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-cell">Instant Doubts Clearing</div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                        <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-cell">Complementary LIVE Webinar Sessions</div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-cell"><strong>225</strong> Concept Video Lectures</div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-cell"><strong>497</strong> Solved Video Examples</div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-cell"><strong>362</strong> Practice Exercises</div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-cell">Printed Study Materials</div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-cell">Personalised Mentor Support</div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-cell">Monthly Consolidated Tests</div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-cell">Parents App to View Progress Reports</div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-cell">Chapter Based Doubt Clearing Sessions</div>
+                        <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                    </div>
+
+                    <div class="feature-row">
+                        <div class="feature-cell">Chapter Based Skill Test</div>
+                        <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                        <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                        <div class="feature-cell"><span class="check-mark">✓</span></div>
+                    </div>
+
+                    <!-- Pricing and buy buttons row -->
+                    <div class="feature-row price-row">
+                        <div class="feature-cell">
+                            <a href="#" class="view-topics">View Topics</a>
+                        </div>
+                        <div class="feature-cell">
+                            <a href="#" class="view-topics">View Topics</a>
+                            <div class="price-cell" id="live-price">₹35000</div>
+                            <span class="original-price" id="live-original">₹40000</span>
+                            <button class="buy-btn" onclick="openRegistrationModal('LIVE Online Classes', 'live-price')">Buy Now</button>
+                        </div>
+                        <div class="feature-cell">
+                            <a href="#" class="view-topics">View Topics</a>
+                            <div class="price-cell" id="mentored-price">₹25000</div>
+                            <span class="original-price" id="mentored-original">₹30000</span>
+                            <button class="buy-btn" onclick="openRegistrationModal('Mentored Learning Program', 'mentored-price')">Buy Now</button>
+                        </div>
+                        <div class="feature-cell">
+                            <a href="#" class="view-topics">View Topics</a>
+                            <div class="price-cell" id="recorded-price">₹10000</div>
+                            <span class="original-price" id="recorded-original">₹12000</span>
+                            <button class="buy-btn" onclick="openRegistrationModal('Recorded Video Course', 'recorded-price')">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Course comparison section end -->
+    </main>
+
+    <!-- Registration Modal -->
+    <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registrationModalLabel">Course Registration</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="course-details" class="mb-4 p-3" style="background: #f8f9fa; border-radius: 8px;">
+                        <h6 id="selected-course" style="color: #007bff; margin-bottom: 8px;"></h6>
+                        <div id="selected-class" style="font-weight: 600; margin-bottom: 4px;"></div>
+                        <div id="selected-price" style="font-size: 18px; font-weight: 700; color: #28a745;"></div>
+                    </div>
+
+                    <form id="courseRegistrationForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="1728c0e6-2318-4386-9640-a25105835b94">
+                        <input type="hidden" name="subject" value="Course Registration - R Square Education">
+                        <input type="checkbox" name="botcheck" style="display:none">
+
+                        <!-- Hidden fields for course details -->
+                        <input type="hidden" name="course_type" id="form-course-type">
+                        <input type="hidden" name="class_selected" id="form-class-selected">
+                        <input type="hidden" name="price_selected" id="form-price-selected">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input class="register__input" type="text" placeholder="Your Full Name *" name="name" id="modal-name" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input class="register__input" type="email" placeholder="Email Address *" name="email" id="modal-email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="register__input" type="tel" placeholder="Phone Number *" name="phone" id="modal-phone" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <textarea class="register__input" placeholder="Your Address" name="address" id="modal-address" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <textarea class="register__input" placeholder="Any special requirements or questions?" name="message" id="modal-message" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="default__button" style="padding: 15px 40px; border-radius: 25px; border: none; background: #007bff; color: white; font-weight: 600;">
+                                Complete Registration <i class="icofont-long-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/aos.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/back-to-top.js"></script>
+    <script src="js/magnific-popup.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // Pricing data for different classes
+        const pricingData = {
+            9: {
+                live: { price: '₹28000', original: '₹35000' },
+                mentored: { price: '₹20000', original: '₹25000' },
+                recorded: { price: '₹8000', original: '₹10000' }
+            },
+            10: {
+                live: { price: '₹30000', original: '₹37000' },
+                mentored: { price: '₹22000', original: '₹27000' },
+                recorded: { price: '₹9000', original: '₹11000' }
+            },
+            11: {
+                live: { price: '₹35000', original: '₹40000' },
+                mentored: { price: '₹25000', original: '₹30000' },
+                recorded: { price: '₹10000', original: '₹12000' }
+            },
+            12: {
+                live: { price: '₹38000', original: '₹45000' },
+                mentored: { price: '₹28000', original: '₹35000' },
+                recorded: { price: '₹12000', original: '₹15000' }
+            }
+        };
+
+        let currentClass = 11; // Default to Class 11
+
+        // Switch class function
+        function switchClass(classNumber) {
+            currentClass = classNumber;
+
+            // Update active tab
+            document.querySelectorAll('.class-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update pricing
+            updatePricing(classNumber);
+        }
+
+        // Update pricing based on selected class
+        function updatePricing(classNumber) {
+            const prices = pricingData[classNumber];
+
+            // Update live course prices
+            document.getElementById('live-price').textContent = prices.live.price;
+            document.getElementById('live-original').textContent = prices.live.original;
+
+            // Update mentored course prices
+            document.getElementById('mentored-price').textContent = prices.mentored.price;
+            document.getElementById('mentored-original').textContent = prices.mentored.original;
+
+            // Update recorded course prices
+            document.getElementById('recorded-price').textContent = prices.recorded.price;
+            document.getElementById('recorded-original').textContent = prices.recorded.original;
+        }
+
+        // Open registration modal
+        function openRegistrationModal(courseType, priceElementId) {
+            const priceElement = document.getElementById(priceElementId);
+            const price = priceElement.textContent;
+
+            // Update modal content
+            document.getElementById('selected-course').textContent = courseType + ' - Physics';
+            document.getElementById('selected-class').textContent = `Class ${currentClass}`;
+            document.getElementById('selected-price').textContent = price;
+
+            // Update hidden form fields
+            document.getElementById('form-course-type').value = courseType + ' - Physics';
+            document.getElementById('form-class-selected').value = `Class ${currentClass}`;
+            document.getElementById('form-price-selected').value = price;
+
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
+            modal.show();
+        }
+
+        // Form submission handler
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('courseRegistrationForm').addEventListener('submit', function(e) {
+                e.preventDefault(); // Stop the default redirect
+
+                const form = e.target;
+                const formData = new FormData(form);
+
+                // Show loading state
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = 'Processing... <i class="icofont-spinner-alt-1 icofont-spin"></i>';
+                submitBtn.disabled = true;
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('✅ Registration successful! Our team will contact you soon with course details.');
+                        form.reset(); // Clear the form
+
+                        // Close modal
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('registrationModal'));
+                        modal.hide();
+                    } else {
+                        alert('❌ There was an error processing your registration. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('⚠️ Something went wrong. Please try again later or contact us directly.');
+                })
+                .finally(() => {
+                    // Restore button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+            });
+        });
+
+        // Theme switching functionality
+        if (localStorage.getItem("theme-color") === "dark" || (!(localStorage.getItem("theme-color") in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.getElementById("light--to-dark-button")?.classList.add("dark--mode");
+        }
+        if (localStorage.getItem("theme-color") === "light") {
+            document.getElementById("light--to-dark-button")?.classList.remove("dark--mode");
+        }
+
+        // Initialize default pricing for Class 11
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePricing(11);
+        });
+    </script>
+
+</body>
+</html>

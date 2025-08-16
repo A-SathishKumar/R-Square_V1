@@ -1,0 +1,1342 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Contact | Edurock - Education LMS Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/aos.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/icofont.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.documentElement.classList.add("is_dark");
+        }
+        if (localStorage.getItem("theme-color") === "light") {
+            document.documentElement.classList.remove("is_dark");
+        } 
+    </script>
+
+
+        <!-- Program Intro Section CSS -->
+        <style>
+            .program-intro-section {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .program-intro-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('img/pattern/dots.png') repeat;
+                opacity: 0.1;
+                z-index: 1;
+            }
+
+            .intro-content {
+                position: relative;
+                z-index: 2;
+            }
+
+            .intro-badge .badge {
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+            }
+
+            .intro-heading {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: #2d3748;
+                margin-bottom: 20px;
+                line-height: 1.2;
+            }
+
+            .intro-description {
+                font-size: 1.1rem;
+                color: #4a5568;
+                line-height: 1.7;
+                margin-bottom: 30px;
+            }
+
+            .intro-highlights {
+                margin-bottom: 35px;
+            }
+
+            .highlight-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 12px;
+                font-weight: 500;
+                color: #2d3748;
+            }
+
+            .highlight-item i {
+                font-size: 18px;
+                margin-right: 12px;
+            }
+
+            .intro-cta {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .btn-outline {
+                display: inline-flex;
+                align-items: center;
+                padding: 12px 25px;
+                border: 2px solid #007bff;
+                color: #007bff;
+                text-decoration: none;
+                border-radius: 25px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                background: transparent;
+            }
+
+            .btn-outline:hover {
+                background: #007bff;
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .btn-outline i {
+                margin-left: 8px;
+                font-size: 14px;
+            }
+
+            .intro-image {
+                position: relative;
+                text-align: center;
+            }
+
+            .intro-image img {
+                max-width: 100%;
+                border-radius: 15px;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            }
+
+            .floating-stats {
+                position: absolute;
+                top: 20px;
+                right: -20px;
+                z-index: 3;
+            }
+
+            .stat-card {
+                background: #fff;
+                padding: 15px 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+                margin-bottom: 15px;
+                text-align: center;
+                border-left: 4px solid #007bff;
+            }
+
+            .stat-card h4 {
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: #007bff;
+                margin: 0;
+            }
+
+            .stat-card p {
+                font-size: 0.9rem;
+                color: #6c757d;
+                margin: 5px 0 0 0;
+                font-weight: 500;
+            }
+
+            /* Dark theme support */
+            .is_dark .program-intro-section {
+                background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%) !important;
+            }
+
+            .is_dark .intro-heading {
+                color: #e2e8f0;
+            }
+
+            .is_dark .intro-description {
+                color: #cbd5e0;
+            }
+
+            .is_dark .highlight-item {
+                color: #e2e8f0;
+            }
+
+            .is_dark .stat-card {
+                background: #4a5568;
+                border-left-color: #63b3ed;
+            }
+
+            .is_dark .stat-card h4 {
+                color: #63b3ed;
+            }
+
+            .is_dark .stat-card p {
+                color: #a0aec0;
+            }
+
+            /* Responsive design */
+            @media (max-width: 991px) {
+                .intro-heading {
+                    font-size: 2rem;
+                }
+
+                .floating-stats {
+                    position: static;
+                    display: flex;
+                    justify-content: center;
+                    gap: 15px;
+                    margin-top: 20px;
+                }
+
+                .stat-card {
+                    margin-bottom: 0;
+                }
+            }
+
+            @media (max-width: 767px) {
+                .program-intro-section {
+                    padding: 40px 0;
+                }
+
+                .intro-heading {
+                    font-size: 1.8rem;
+                }
+
+                .intro-cta {
+                    justify-content: center;
+                    text-align: center;
+                }
+
+                .intro-cta .default__button,
+                .intro-cta .btn-outline {
+                    width: 100%;
+                    justify-content: center;
+                    margin-bottom: 10px;
+                }
+            }
+        </style>
+
+</head>
+
+
+<body class="body__wrapper">
+    <!-- pre loader area start -->
+    <div id="back__preloader">
+        <div id="back__circle_loader"></div>
+        <div class="back__loader_logo">
+            <img loading="lazy" src="img/pre.png" alt="Preload">
+        </div>
+    </div>
+    </div>
+    <!-- pre loader area end -->
+
+    <!-- Dark/Light area start -->
+    <div class="mode_switcher my_switcher">
+        <button id="light--to-dark-button" class="light align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon dark__mode" viewBox="0 0 512 512">
+                <path
+                    d="M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z"
+                    fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="32" />
+            </svg>
+
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon light__mode" viewBox="0 0 512 512">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"
+                    d="M256 48v48M256 416v48M403.08 108.92l-33.94 33.94M142.86 369.14l-33.94 33.94M464 256h-48M96 256H48M403.08 403.08l-33.94-33.94M142.86 142.86l-33.94-33.94" />
+                <circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-miterlimit="10" stroke-width="32" />
+            </svg>
+
+            <span class="light__mode">Light</span>
+            <span class="dark__mode">Dark</span>
+        </button>
+    </div>
+    <!-- Dark/Light area end -->
+
+    <main class="main_wrapper overflow-hidden">
+
+
+        <!-- topbar__section__stert -->
+        <div class="topbararea topbararea--2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="topbar__left">
+                            <ul>
+                                <li>
+                                    Call Us: +91 73580 40969
+                                </li>
+                                <li>
+                                    - Mail Us: info@rsquareeducation.in
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="topbar__right">
+                            <div class="topbar__icon">
+                                <i class="icofont-location-pin"></i>
+                            </div>
+                            <div class="topbar__text">
+                                <p>9/5, Lakshmipuram Road,
+                                    Opposite to Head Post Office,
+                                    Tiruvallur - 602001 </p>
+                            </div>
+                            <div class="topbar__list">
+                                <ul>
+                                    <li>
+                                        <a href="#"><i class="icofont-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icofont-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icofont-instagram"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icofont-youtube-play"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- topbar__section__end -->
+
+
+        <!-- headar section start -->
+        <header>
+            <div class="headerarea headerarea__2 header__sticky header__area">
+                <div class="container desktop__menu__wrapper">
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-md-6">
+                            <div class="headerarea__left">
+                                <div class="headerarea__left__logo">
+                                    <a href="index.html"><img loading="lazy" src="img/logo/logo_without_bg.png" alt="logo" style="max-height: 50px;"></a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xl-8 col-lg-8 main_menu_wrap">
+                            <div class="headerarea__main__menu">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/R-Square/index.html">Home</a></li>
+                                        <li><a href="/R-Square/course.html">Course</a></li>
+                                        <li><a href="/R-Square/topper.html">Toppers</a></li>
+                                        <li><a href="/R-Square/contact.html">Contact Us</a></li>
+                                        <li><a href="/R-Square/about.html">About Us</a></li>>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-6 text-right">
+                            <div class="headerarea__right__logo">
+                                <img loading="lazy" src="img/partners/stem.jpeg" alt="Other Logo" style="max-height: 50px;">
+                            </div>
+                        </div>
+  
+
+                    </div>
+        </header>
+        <!-- header section end -->
+
+        <!-- Mobile Menu Start Here -->
+        <div class="mobile-off-canvas-active">
+            <a class="mobile-aside-close"><i class="icofont  icofont-close-line"></i></a>
+            <div class="header-mobile-aside-wrap">
+                <div class="mobile-search">
+                    <form class="search-form" action="#">
+                        <input type="text" placeholder="Search entire store…">
+                        <button class="button-search"><i class="icofont icofont-search-2"></i></button>
+                    </form>
+                </div>
+
+                <div class="mobile-social-wrap">
+                    <a class="facebook" href="#"><i class="icofont icofont-facebook"></i></a>
+                    <a class="twitter" href="#"><i class="icofont icofont-twitter"></i></a>
+                    <a class="pinterest" href="#"><i class="icofont icofont-pinterest"></i></a>
+                    <a class="instagram" href="#"><i class="icofont icofont-instagram"></i></a>
+                    <a class="google" href="#"><i class="icofont icofont-youtube-play"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- theme fixed shadow -->
+        <div>
+            <div class="theme__shadow__circle"></div>
+            <div class="theme__shadow__circle shadow__right"></div>
+        </div>
+        <!-- theme fixed shadow -->
+        
+        
+
+
+        
+        <!-- Program Intro Section -->
+        <div class="program-intro-section" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 60px 0px; margin-top: 50px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 col-md-7 col-12" data-aos="fade-up">
+                        <div class="intro-content">
+                            <div class="intro-badge">
+                                <span class="badge bg-primary text-white px-3 py-2 rounded-pill mb-3">
+                                    <i class="icofont-mathematics"></i> Mathematics Program
+                                </span>
+                            </div>
+                            <h2 class="intro-heading">Master Mathematics with Expert Guidance</h2>
+                            <p class="intro-description">
+                                Our comprehensive <strong>Mathematics program</strong> is designed to build strong conceptual foundations 
+                                and problem-solving skills for students preparing for <strong>IIT-JEE</strong>, <strong>NEET</strong>, 
+                                and <strong>CBSE board exams</strong>. Learn from experienced faculty with personalized attention, 
+                                interactive sessions, and extensive practice materials.
+                            </p>
+                            <div class="intro-highlights">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="highlight-item">
+                                            <i class="icofont-check-circled text-success"></i>
+                                            <span>Expert Faculty from IITs & Top Institutes</span>
+                                        </div>
+                                        <div class="highlight-item">
+                                            <i class="icofont-check-circled text-success"></i>
+                                            <span>Live Interactive Classes & Doubt Sessions</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="highlight-item">
+                                            <i class="icofont-check-circled text-success"></i>
+                                            <span>Comprehensive Study Materials & Tests</span>
+                                        </div>
+                                        <div class="highlight-item">
+                                            <i class="icofont-check-circled text-success"></i>
+                                            <span>Progress Tracking & Personal Mentorship</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-5 col-12 d-none d-md-block" data-aos="fade-left">
+                        <div class="intro-image">
+                            <img src="img/about/about_2.png" alt="Mathematics Learning" class="img-fluid">
+                            <div class="floating-stats">
+                                <div class="stat-card">
+                                    <h4>95%</h4>
+                                    <p>Success Rate</p>
+                                </div>
+                                <div class="stat-card">
+                                    <h4>1000+</h4>
+                                    <p>Students</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<div class="container py-5">
+            <!-- Course Tabs -->
+
+            <!-- Tab Content -->
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="tab-content" id="courseTabContent">
+                        <!-- Course Comparison Table Section -->
+                        <div class="course-comparison-wrapper">
+                            <!-- Class selection tabs -->
+                            <div class="class-tabs">
+                                <button class="class-tab active" onclick="switchClass(9)">Class 9</button>
+                                <button class="class-tab" onclick="switchClass(10)">Class 10</button>
+                                <button class="class-tab" onclick="switchClass(11)">Class 11</button>
+                                <button class="class-tab" onclick="switchClass(12)">Class 12</button>
+                            </div>
+
+                            <!-- Comparison table -->
+                            <div class="comparison-table">
+                                <!-- Table header -->
+                                <div class="table-header">
+                                    <div class="header-cell features-header">Features</div>
+                                    <div class="header-cell live-online">
+                                        <div class="course-header">LIVE Online Classes</div>
+                                        <div style="font-size: 14px; margin-top: 4px;">Maths</div>
+                                    </div>
+                                    <div class="header-cell mentored-learning">
+                                        <div class="course-header">Mentored Learning Program</div>
+                                        <div style="font-size: 14px; margin-top: 4px;">Maths</div>
+                                    </div>
+                                    <div class="header-cell recorded-video">
+                                        <div class="course-header">Recorded Video Course</div>
+                                        <div style="font-size: 14px; margin-top: 4px;">Maths</div>
+                                    </div>
+                                </div>
+
+                                <!-- Feature rows -->
+                                <div class="feature-row">
+                                    <div class="feature-cell">Live Online Class by Expert Teachers</div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                                    <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                                </div>
+
+                                <div class="feature-row">
+                                    <div class="feature-cell">Instant Doubts Clearing</div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                                    <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                                </div>
+
+                                <div class="feature-row">
+                                    <div class="feature-cell">Complementary LIVE Webinar Sessions</div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                                </div>
+
+                                <div class="feature-row">
+                                    <div class="feature-cell"><strong>225</strong> Concept Video Lectures</div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                </div>
+
+                                <div class="feature-row">
+                                    <div class="feature-cell"><strong>497</strong> Solved Video Examples</div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                </div>
+
+                                <div class="feature-row">
+                                    <div class="feature-cell"><strong>362</strong> Practice Exercises</div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                </div>
+
+                                <div class="feature-row">
+                                    <div class="feature-cell">Printed Study Materials</div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                                </div>
+
+                                <div class="feature-row">
+                                    <div class="feature-cell">Personalised Mentor Support</div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                                </div>
+
+                                <div class="feature-row">
+                                    <div class="feature-cell">Monthly Consolidated Tests</div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                                </div>
+
+                                <div class="feature-row">
+                                    <div class="feature-cell">Parents App to View Progress Reports</div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                                </div>
+
+                                <div class="feature-row">
+                                    <div class="feature-cell">Chapter Based Doubt Clearing Sessions</div>
+                                    <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                </div>
+
+                                <div class="feature-row">
+                                    <div class="feature-cell">Chapter Based Skill Test</div>
+                                    <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                                    <div class="feature-cell"><span class="cross-mark">✗</span></div>
+                                    <div class="feature-cell"><span class="check-mark">✓</span></div>
+                                </div>
+
+                                <!-- Pricing and buy buttons row -->
+                                <div class="table-header price-row">
+                                    <div class="feature-cell">
+                                        
+                                    </div>
+
+                                    <div class="feature-cell">
+                                        <div class="price-cell" id="live-price">₹35000</div>
+                                        <span class="original-price" id="live-original">₹40000</span>
+                                        <button class="buy-btn" onclick="openRegistrationModal('LIVE Online Classes', 'live-price')">Buy Now</button>
+                                    </div>
+                                    <div class="feature-cell">
+                                        <div class="price-cell" id="mentored-price">₹25000</div>
+                                        <span class="original-price" id="mentored-original">₹30000</span>
+                                        <button class="buy-btn" onclick="openRegistrationModal('Mentored Learning Program', 'mentored-price')">Buy Now</button>
+                                    </div>
+                                    <div class="feature-cell">
+                                        <div class="price-cell" id="recorded-price">₹10000</div>
+                                        <span class="original-price" id="recorded-original">₹12000</span>
+                                        <button class="buy-btn" onclick="openRegistrationModal('Recorded Video Course', 'recorded-price')">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CSS Styles -->
+        <style>
+            .single__tab__link.active,
+            .single__tab__link:hover {
+                background: linear-gradient(135deg, #007bfd, #6610f2);
+                color: #fff;
+                transform: scale(1.05);
+                text-decoration: none;
+            }
+
+            .course-card {
+                background: #fff;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+                animation: fadeSlideIn 0.5s ease-in-out;
+                margin-top: 20px;
+            }
+
+            .course-title {
+                color: #007bff;
+                font-size: 28px;
+                margin-bottom: 15px;
+                font-weight: bold;
+            }
+
+            @keyframes fadeSlideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .animated-tab {
+                animation: tabBounce 0.6s ease;
+            }
+
+            @keyframes tabBounce {
+                0% {
+                    transform: scale(0.95);
+                }
+
+                50% {
+                    transform: scale(1.05);
+                }
+
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            /* New Comparison Table Styles */
+            .course-comparison-wrapper {
+                margin: 40px 0;
+            }
+
+            .class-tabs {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 40px;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .class-tab {
+                padding: 12px 24px;
+                background: #e9ecef;
+                border: none;
+                border-radius: 8px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                color: #495057;
+            }
+
+            .class-tab.active {
+                background: #007bff;
+                color: white;
+            }
+
+            .comparison-table {
+                background: white;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                margin-top: 30px;
+            }
+
+            .table-header {
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+                background: #f8f9fa;
+            }
+
+            .header-cell {
+                padding: 20px;
+                text-align: center;
+                font-weight: 600;
+                border-right: 1px solid #dee2e6;
+            }
+
+            .header-cell:last-child {
+                border-right: none;
+            }
+
+            .features-header {
+                background: #007bff;
+                color: white;
+                text-align: left;
+            }
+
+            .course-header {
+                color: white;
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            .live-online {
+                background: #a414fd;
+            }
+
+            .mentored-learning {
+                background: #a735dc;
+            }
+
+            .recorded-video {
+                background: #794ca3;
+            }
+
+            .feature-row {
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+                border-bottom: 1px solid #dee2e6;
+            }
+
+            .feature-row:last-child {
+                border-bottom: none;
+            }
+
+            .feature-cell {
+                padding: 15px 20px;
+                border-right: 1px solid #dee2e6;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .feature-cell:first-child {
+                text-align: left;
+                justify-content: flex-start;
+                font-weight: 500;
+            }
+
+            .feature-cell:last-child {
+                border-right: none;
+            }
+
+            .check-mark {
+                color: #28a745;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .cross-mark {
+                color: #dc3545;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .price-row {
+                background: #f8f9fa;
+                font-weight: 600;
+            }
+
+            .price-cell {
+                padding: 20px;
+                text-align: center;
+                font-size: 18px;
+                font-weight: 700;
+            }
+
+            .original-price {
+                text-decoration: line-through;
+                color: #6c757d;
+                font-size: 14px;
+                display: block;
+                margin-top: 4px;
+            }
+
+            .view-topics {
+                color: #007bff;
+                text-decoration: none;
+                font-size: 14px;
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            .buy-btn {
+                background: #28a745;
+                color: white;
+                border: none;
+                padding: 5px 30px;
+                border-radius: 25px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                width: 50%;
+            }
+
+            .buy-btn:hover {
+                background: #218838;
+                transform: translateY(-2px);
+            }
+
+            /* Dark theme styles */
+            .is_dark .comparison-table {
+                background: #2d3748;
+            }
+
+            .is_dark .table-header {
+                background: #4a5568;
+            }
+
+            .is_dark .feature-row {
+                border-bottom: 1px solid #4a5568;
+            }
+
+            .is_dark .feature-cell {
+                border-right: 1px solid #4a5568;
+                color: #e2e8f0;
+            }
+
+            .is_dark .price-row {
+                background: #4a5568;
+            }
+
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .table-header,
+                .feature-row {
+                    grid-template-columns: 1fr;
+                    text-align: center;
+                }
+
+                .feature-cell:first-child {
+                    text-align: center;
+                    justify-content: center;
+                    font-weight: 600;
+                    background: #f8f9fa;
+                }
+
+                .class-tabs {
+                    gap: 5px;
+                }
+
+                .class-tab {
+                    padding: 8px 16px;
+                    font-size: 14px;
+                }
+            }
+
+            /* Modal Styles */
+            .modal-content {
+                border-radius: 15px;
+                border: none;
+            }
+
+            .modal-header {
+                background: #007bff;
+                color: white;
+                border-radius: 15px 15px 0 0;
+            }
+
+            .register__input {
+                width: 100%;
+                padding: 15px;
+                border: 1px solid #dee2e6;
+                border-radius: 8px;
+                margin-bottom: 15px;
+                font-size: 14px;
+            }
+
+            .register__input:focus {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+            }
+        </style>
+
+
+
+
+        
+
+        <!-- Registration Modal -->
+        <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registrationModalLabel">Course Registration</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="course-details" class="mb-4 p-3" style="background: #f8f9fa; border-radius: 8px;">
+                            <h6 id="selected-course" style="color: #007bff; margin-bottom: 8px;"></h6>
+                            <div id="selected-class" style="font-weight: 600; margin-bottom: 4px;"></div>
+                            <div id="selected-price" style="font-size: 18px; font-weight: 700; color: #28a745;"></div>
+                        </div>
+
+                        <form id="courseRegistrationForm" action="https://api.web3forms.com/submit" method="POST">
+                            <input type="hidden" name="access_key" value="1728c0e6-2318-4386-9640-a25105835b94">
+                            <input type="hidden" name="subject" value="Course Registration - R Square Education">
+                            <input type="checkbox" name="botcheck" style="display:none">
+
+                            <!-- Hidden fields for course details -->
+                            <input type="hidden" name="course_type" id="form-course-type">
+                            <input type="hidden" name="class_selected" id="form-class-selected">
+                            <input type="hidden" name="price_selected" id="form-price-selected">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input class="register__input" type="text" placeholder="Your Full Name *" name="name" id="modal-name" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input class="register__input" type="email" placeholder="Email Address *" name="email" id="modal-email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="register__input" type="tel" placeholder="Phone Number *" name="phone" id="modal-phone" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea class="register__input" placeholder="Your Address" name="address" id="modal-address" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea class="register__input" placeholder="Any special requirements or questions?" name="message" id="modal-message" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="default__button" style="padding: 15px 40px; border-radius: 25px; border: none; background: #007bff; color: white; font-weight: 600;">
+                                    Complete Registration <i class="icofont-long-arrow-right"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <!-- footer__section__start -->
+        <div class="footerarea">
+            <div class="container">
+                <div class="footerarea__newsletter__wraper">
+                    <div class="row align-items-center">
+                        <!-- Left Side Content -->
+                        <div class="col-md-6 col-sm-12" data-aos="fade-up">
+                            <div class="footerarea__text">
+                                <h3>Still Need Our <span>Support</span>?</h3>
+                                <p>Don’t wait, reach out to us for assistance.</p>
+                            </div>
+                        </div>
+
+                        <!-- Right Side Email Box -->
+                        <div class="col-md-6 col-sm-12" data-aos="fade-up">
+                            <div class="email-box">
+                                <a href="mailto:support@example.com"> info@rsquareeducation.in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .footerarea__newsletter__wraper {
+                        padding: 20px 0;
+                    }
+
+                    .footerarea__text h3 {
+                        font-size: 40px;
+                        font-weight: bold;
+                        color: #fff;
+                    }
+
+                    .footerarea__text p {
+                        font-size: 16px;
+                        color: #ddd;
+                    }
+
+                    .email-box {
+                        background: linear-gradient(135deg, #ff7eb3, #ff758c);
+                        padding: 15px 25px;
+                        border-radius: 10px;
+                        text-align: center;
+                        box-shadow: 0 4px 15px rgba(255, 118, 136, 0.4);
+                        animation: glow 1.5s infinite alternate;
+                        max-width: 350px;
+                        margin: auto;
+                    }
+
+                    .email-box a {
+                        font-size: 22px;
+                        font-weight: bold;
+                        color: #fff;
+                        text-decoration: none;
+                        font-family: 'Poppins', sans-serif;
+                        letter-spacing: 1px;
+                    }
+
+                    @keyframes glow {
+                        from {
+                            box-shadow: 0 4px 15px rgba(255, 118, 136, 0.4);
+                        }
+
+                        to {
+                            box-shadow: 0 6px 20px rgba(255, 118, 136, 0.8);
+                        }
+                    }
+
+                    @media (max-width: 768px) {
+                        .footerarea__text {
+                            text-align: center;
+                            margin-bottom: 15px;
+                        }
+
+                        .email-box {
+                            max-width: 100%;
+                        }
+                    }
+                </style>
+
+                <div class="footerarea__wrapper footerarea__wrapper__2">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12" data-aos="fade-up">
+                            <div class="footerarea__inner footerarea__about__us">
+                                <div class="footerarea__heading">
+                                    <h3>About us</h3>
+                                </div>
+                                <div class="footerarea__content">
+                                    <p>At R Square Education, we redefine learning with an innovative and result-driven
+                                        approach. Our commitment to conceptual learning ensures that students not only
+                                        understand but also excel in their fields.</p>
+                                </div>
+                                <div class="foter__bottom__text">
+                                    <div class="footer__bottom__icon">
+                                        <i class="icofont-clock-time"></i>
+                                    </div>
+                                    <div class="footer__bottom__content">
+                                        <h6>Opening Houres</h6>
+                                        <span>Mon - Sun(8.00AM - 9.00PM)</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6" data-aos="fade-up">
+                            <div class="footerarea__inner">
+                                <div class="footerarea__heading">
+                                    <h3>Usefull Links</h3>
+                                </div>
+                                <div class="footerarea__list">
+                                    <ul>
+                                        <li>
+                                            <a href="/R-Square/franchise_equiry.html">Franchise Enquiry</a>
+                                        </li>
+                                        <li>
+                                            <a href="/R-Square/privacy_policy.html">Privacy Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href="/R-Square/about.html">About Us</a>
+                                        </li>
+                                        <li>
+                                            <a href="/R-Square/contact.html">Contact Us</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6" data-aos="fade-up">
+                            <div class="footerarea__inner footerarea__padding__left">
+                                <div class="footerarea__heading">
+                                    <h3>Course</h3>
+                                </div>
+                                <div class="footerarea__list">
+                                    <ul>
+                                        <li>
+                                            <a href="#">NEET</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">IIT-JEE</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Foundation Courses</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Tuition For Classes</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12" data-aos="fade-up">
+                            <div class="footerarea__inner footerarea__about__us">
+                                <div class="footerarea__heading">
+                                    <h3>Head Office</h3>
+                                </div>
+                                <div class="footerarea__content">
+                                    <p>9/5, Lakshmipuram Road, Opposite to Head Post Office, Tiruvallur - 602001
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footerarea__copyright__wrapper footerarea__copyright__wrapper__2">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3">
+                            <div class="copyright__logo">
+                                <a href="/"><img loading="lazy" src="img/logo/logo.png" alt="logo"></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="footerarea__copyright__content footerarea__copyright__content__2">
+                                <p>Copyright © <span>2025</span> by R Square. All Rights Reserved.</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3">
+                            <div class="footerarea__icon footerarea__icon__2">
+                                <ul>
+                                    <li><a href="//facebook.com"><i class="icofont-facebook"></i></a></li>
+                                    <li><a href="//twitter.com"><i class="icofont-twitter"></i></a></li>
+                                    <li><a href="//linkedin.com"><i class="icofont-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- footer__section__end -->
+
+
+    </main>
+
+
+
+
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/jquery.meanmenu.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
+    
+    <script>
+        // Pricing data for different classes
+        const pricingData = {
+            9: {
+                live: { price: '₹28000', original: '₹35000' },
+                mentored: { price: '₹20000', original: '₹25000' },
+                recorded: { price: '₹8000', original: '₹10000' }
+            },
+            10: {
+                live: { price: '₹30000', original: '₹37000' },
+                mentored: { price: '₹22000', original: '₹27000' },
+                recorded: { price: '₹9000', original: '₹11000' }
+            },
+            11: {
+                live: { price: '₹35000', original: '₹40000' },
+                mentored: { price: '₹25000', original: '₹30000' },
+                recorded: { price: '₹10000', original: '₹12000' }
+            },
+            12: {
+                live: { price: '₹38000', original: '₹45000' },
+                mentored: { price: '₹28000', original: '₹35000' },
+                recorded: { price: '₹12000', original: '₹15000' }
+            }
+        };
+
+        let currentClass = 11; // Default to Class 11
+
+        // Switch class function
+        function switchClass(classNumber) {
+            currentClass = classNumber;
+
+            // Update active tab
+            document.querySelectorAll('.class-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update pricing
+            updatePricing(classNumber);
+        }
+
+        // Update pricing based on selected class
+        function updatePricing(classNumber) {
+            const prices = pricingData[classNumber];
+
+            if (prices) {
+                // Update live course prices
+                document.getElementById('live-price').textContent = prices.live.price;
+                document.getElementById('live-original').textContent = prices.live.original;
+
+                // Update mentored course prices
+                document.getElementById('mentored-price').textContent = prices.mentored.price;
+                document.getElementById('mentored-original').textContent = prices.mentored.original;
+
+                // Update recorded course prices
+                document.getElementById('recorded-price').textContent = prices.recorded.price;
+                document.getElementById('recorded-original').textContent = prices.recorded.original;
+            }
+        }
+
+        // Open registration modal
+        function openRegistrationModal(courseType, priceElementId) {
+            const priceElement = document.getElementById(priceElementId);
+            const price = priceElement ? priceElement.textContent : 'N/A';
+
+            // Update modal content
+            document.getElementById('selected-course').textContent = courseType + ' - Maths';
+            document.getElementById('selected-class').textContent = `Class ${currentClass}`;
+            document.getElementById('selected-price').textContent = price;
+
+            // Update hidden form fields
+            document.getElementById('form-course-type').value = courseType + ' - Maths';
+            document.getElementById('form-class-selected').value = `Class ${currentClass}`;
+            document.getElementById('form-price-selected').value = price;
+
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
+            modal.show();
+        }
+
+        // Form submission handler
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize default pricing for Class 11
+            updatePricing(11);
+
+            const form = document.getElementById('courseRegistrationForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Stop the default redirect
+
+                    const formData = new FormData(e.target);
+
+                    // Show loading state
+                    const submitBtn = e.target.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = 'Processing... <i class="icofont-spinner-alt-1 icofont-spin"></i>';
+                    submitBtn.disabled = true;
+
+                    fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('✅ Registration successful! Our team will contact you soon with course details.');
+                            e.target.reset(); // Clear the form
+
+                            // Close modal
+                            const modal = bootstrap.Modal.getInstance(document.getElementById('registrationModal'));
+                            if (modal) modal.hide();
+                        } else {
+                            alert('❌ There was an error processing your registration. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('⚠️ Something went wrong. Please try again later or contact us directly.');
+                    })
+                    .finally(() => {
+                        // Restore button state
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    });
+                });
+            }
+        });
+    </script>
+
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem("theme-color") === "dark" || (!("theme-color" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            document.getElementById("light--to-dark-button")?.classList.add("dark--mode");
+        }
+        if (localStorage.getItem("theme-color") === "light") {
+            document.getElementById("light--to-dark-button")?.classList.remove("dark--mode");
+        } 
+    </script>
+
+
+</body>
+
+</html>
