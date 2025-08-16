@@ -15342,3 +15342,63 @@ Dark Mode
   border-color: #007bff;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
 }
+
+@media (max-width: 991px) {
+  .header {
+    padding: 18px 18px;
+  }
+  .header .logo {
+    max-width: 150px;
+  }
+  .header .nav {
+    gap: 18px;
+  }
+}
+
+/* Responsive: Mobile Navigation */
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    padding: 14px 10px;
+  }
+  .header .logo {
+    max-width: 120px;
+  }
+  .header .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 1200;
+  }
+  .header .nav {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    background: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Open state for mobile menu (apply .open via JS) */
+  .header .nav.open {
+    max-height: 360px; /* Enough for 6 links at 48px each */
+    padding: 14px 0;
+  }
+  .header .nav a {
+    width: 100%;
+    display: block;
+    padding: 14px 20px;
+    font-size: 17px;
+    border-radius: 0;
+    border-bottom: 1px solid #f2f2f2;
+  }
+}
