@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
 
     <script>
@@ -125,40 +126,58 @@
         <!-- headar section start -->
         <header>
             <div class="headerarea headerarea__2 header__sticky header__area">
-                <div class="container desktop__menu__wrapper">
-                    <div class="row">
-                        <div class="col-xl-2 col-lg-2 col-md-6">
-                            <div class="headerarea__left">
-                                <div class="headerarea__left__logo">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div class="headerarea__left d-flex align-items-center">
+                                <div class="headerarea__left__logo me-3">
                                     <a href="index.html">
                                         <img loading="lazy" src="img/logo/logo_without_bg.png" alt="logo"
-                                            style="max-width: 240px; height: auto; transition: transform 0.3s ease-in-out; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));"
+                                            class="img-fluid"
+                                            style="max-width: 200px; height: auto; transition: transform 0.3s ease-in-out; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));"
                                             onmouseover="this.style.transform='scale(1.05)'"
                                             onmouseout="this.style.transform='scale(1)'">
                                     </a>
                                 </div>
-
+                                <div class="headerarea__right__logo">
+                                    <img loading="lazy" src="img/logo/stem_logo.png" alt="STEM Logo"
+                                        style="max-height: 45px;">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-xl-8 col-lg-8 main_menu_wrap">
-                            <div class="headerarea__main__menu">
-                                <nav>
-                                    <ul>
-                                        <li><a href="/R-Square/index.html">Home</a></li>
-                                        <li><a href="/R-Square/course.html">Course</a></li>
-                                        <li><a href="/R-Square/topper.html">Toppers</a></li>
-                                        <li><a href="/R-Square/contact.html">Contact Us</a></li>
-                                        <li><a href="/R-Square/about.html">About Us</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-2 col-md-6 text-right">
-                            <div class="headerarea__right__logo">
-                                <a href="https://example.com" target="_blank">
-                                    <img loading="lazy" src="img/logo/stem_logo.png" alt="Other Logo"
-                                        style="max-height: 50px;">
-                                </a>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <div class="headerarea__right d-flex justify-content-end align-items-center">
+                                <div class="headerarea__main__menu desktop__menu__wrapper">
+                                    <nav>
+                                        <ul class="d-flex list-unstyled mb-0">
+                                            <li class="me-3"><a href="/index.html">Home</a></li>
+                                            <li class="dropdown me-3">
+                                                <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Subjects 
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="/maths.html">Maths</a></li>
+                                                    <li><a class="dropdown-item" href="/physics.html">Physics</a></li>
+                                                    <li><a class="dropdown-item" href="/chemistry.html">Chemistry</a></li>
+                                                    <li><a class="dropdown-item" href="/biology.html">Biology</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="me-3"><a href="/topper.html">Toppers</a></li>
+                                            <li class="me-3"><a href="/contact.html">Contact Us</a></li>
+                                            <li><a href="/about.html">About Us</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- Mobile Menu Toggle Button -->
+                                <div class="mobile-menu-toggle d-md-none ms-3">
+                                    <button class="mobile-aside-button" type="button" aria-label="Toggle mobile menu">
+                                        <div class="hamburger-menu">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -169,21 +188,84 @@
 
         <!-- Mobile Menu Start Here -->
         <div class="mobile-off-canvas-active">
-            <a class="mobile-aside-close"><i class="icofont  icofont-close-line"></i></a>
             <div class="header-mobile-aside-wrap">
-                <div class="mobile-search">
-                    <form class="search-form" action="#">
-                        <input type="text" placeholder="Search entire store…">
-                        <button class="button-search"><i class="icofont icofont-search-2"></i></button>
-                    </form>
+                <!-- Mobile Menu Header with Close Button -->
+                <div class="mobile-menu-header">
+                    <div class="mobile-menu-logo">
+                        <img src="img/logo/logo_without_bg.png" alt="R-Square Education" style="max-width: 150px;">
+                    </div>
+                    <button class="mobile-aside-close" type="button" aria-label="Close mobile menu">
+                        <i class="icofont icofont-close-line"></i>
+                    </button>
                 </div>
 
+                <!-- Mobile Navigation Menu -->
+                <div class="mobile-menu-wrap headerarea mob__menu__wrapper" style="display: block !important; visibility: visible !important;">
+                    <div class="mobile-navigation" style="display: block !important; visibility: visible !important;">
+                        <nav style="display: block !important; visibility: visible !important;">
+                            <ul class="mobile-menu" style="display: block !important; visibility: visible !important; list-style: none; padding: 0; margin: 0;">
+                                <li style="display: block !important; visibility: visible !important; border-bottom: 1px solid #eee;">
+                                    <a href="index.html" style="display: flex !important; visibility: visible !important; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; font-size: 1.1rem; font-weight: 500;">
+                                        <i class="icofont icofont-home" style="margin-right: 12px; width: 20px; text-align: center; color: #667eea;"></i> Home
+                                    </a>
+                                </li>
+                                <li class="menu-item-has-children" style="display: block !important; visibility: visible !important; border-bottom: 1px solid #eee;">
+                                    <a href="#" style="display: flex !important; visibility: visible !important; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; font-size: 1.1rem; font-weight: 500;">
+                                        <i class="icofont icofont-book" style="margin-right: 12px; width: 20px; text-align: center; color: #667eea;"></i> Subjects 
+                                        <i class="icofont icofont-simple-down" style="margin-right: auto; transition: transform 0.3s ease;"></i>
+                                    </a>
+                                    <ul class="sub-menu" style="display: none; list-style: none; padding-left: 20px; margin: 0; background-color: #f8f9fa;">
+                                        <li style="display: block !important; visibility: visible !important;">
+                                            <a href="maths.html" style="display: flex !important; visibility: visible !important; align-items: center; padding: 12px 20px 12px 50px; color: #666; text-decoration: none; font-size: 1rem;">
+                                                <i class="icofont icofont-calculator" style="margin-right: 12px; width: 20px; text-align: center; color: #999;"></i> Maths
+                                            </a>
+                                        </li>
+                                        <li style="display: block !important; visibility: visible !important;">
+                                            <a href="physics.html" style="display: flex !important; visibility: visible !important; align-items: center; padding: 12px 20px 12px 50px; color: #666; text-decoration: none; font-size: 1rem;">
+                                                <i class="icofont icofont-atom" style="margin-right: 12px; width: 20px; text-align: center; color: #999;"></i> Physics
+                                            </a>
+                                        </li>
+                                        <li style="display: block !important; visibility: visible !important;">
+                                            <a href="chemistry.html" style="display: flex !important; visibility: visible !important; align-items: center; padding: 12px 20px 12px 50px; color: #666; text-decoration: none; font-size: 1rem;">
+                                                <i class="icofont icofont-flask" style="margin-right: 12px; width: 20px; text-align: center; color: #999;"></i> Chemistry
+                                            </a>
+                                        </li>
+                                        <li style="display: block !important; visibility: visible !important;">
+                                            <a href="biology.html" style="display: flex !important; visibility: visible !important; align-items: center; padding: 12px 20px 12px 50px; color: #666; text-decoration: none; font-size: 1rem;">
+                                                <i class="icofont icofont-leaf" style="margin-right: 12px; width: 20px; text-align: center; color: #999;"></i> Biology
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li style="display: block !important; visibility: visible !important; border-bottom: 1px solid #eee;">
+                                    <a href="topper.html" style="display: flex !important; visibility: visible !important; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; font-size: 1.1rem; font-weight: 500;">
+                                        <i class="icofont icofont-trophy" style="margin-right: 12px; width: 20px; text-align: center; color: #667eea;"></i> Toppers
+                                    </a>
+                                </li>
+                                <li style="display: block !important; visibility: visible !important; border-bottom: 1px solid #eee;">
+                                    <a href="contact.html" style="display: flex !important; visibility: visible !important; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; font-size: 1.1rem; font-weight: 500;">
+                                        <i class="icofont icofont-phone" style="margin-right: 12px; width: 20px; text-align: center; color: #667eea;"></i> Contact Us
+                                    </a>
+                                </li>
+                                <li style="display: block !important; visibility: visible !important; border-bottom: 1px solid #eee;">
+                                    <a href="about.html" style="display: flex !important; visibility: visible !important; align-items: center; padding: 15px 20px; color: #333; text-decoration: none; font-size: 1.1rem; font-weight: 500;">
+                                        <i class="icofont icofont-info-circle" style="margin-right: 12px; width: 20px; text-align: center; color: #667eea;"></i> About Us
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Mobile Social Links -->
                 <div class="mobile-social-wrap">
-                    <a class="facebook" href="#"><i class="icofont icofont-facebook"></i></a>
-                    <a class="twitter" href="#"><i class="icofont icofont-twitter"></i></a>
-                    <a class="pinterest" href="#"><i class="icofont icofont-pinterest"></i></a>
-                    <a class="instagram" href="#"><i class="icofont icofont-instagram"></i></a>
-                    <a class="google" href="#"><i class="icofont icofont-youtube-play"></i></a>
+                    <h6 class="mobile-social-title">Follow Us</h6>
+                    <div class="mobile-social-links">
+                        <a class="facebook" href="#" aria-label="Facebook"><i class="icofont icofont-facebook"></i></a>
+                        <a class="twitter" href="#" aria-label="Twitter"><i class="icofont icofont-twitter"></i></a>
+                        <a class="instagram" href="#" aria-label="Instagram"><i class="icofont icofont-instagram"></i></a>
+                        <a class="youtube" href="#" aria-label="YouTube"><i class="icofont icofont-youtube-play"></i></a>
+                    </div>
                 </div>
             </div>
         </div>

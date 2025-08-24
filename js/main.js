@@ -20,20 +20,60 @@
             var navbarTrigger = $('.mobile-aside-button'),
                 endTrigger = $('.mobile-aside-close'),
                 container = $('.mobile-off-canvas-active'),
-                wrapper = $('.wrapper');
+                wrapper = $('body'),
+                hamburger = $('.hamburger-menu');
+            
             wrapper.prepend('<div class="body-overlay"></div>');
+            
             navbarTrigger.on('click', function(e) {
                 e.preventDefault();
+                console.log('Mobile menu opened'); // Debug log
                 container.addClass('inside');
                 wrapper.addClass('overlay-active');
+                hamburger.addClass('active');
+                $('body').css('overflow', 'hidden');
+                
+                // Force mobile menu to be visible
+                setTimeout(function() {
+                    container.find('.mobile-menu').show();
+                    container.find('.mobile-menu li').show();
+                    container.find('.mobile-menu a').show();
+                }, 100);
             });
+            
             endTrigger.on('click', function() {
+                console.log('Mobile menu closed'); // Debug log
                 container.removeClass('inside');
                 wrapper.removeClass('overlay-active');
+                hamburger.removeClass('active');
+                $('body').css('overflow', 'auto');
             });
+            
             $('.body-overlay').on('click', function() {
                 container.removeClass('inside');
                 wrapper.removeClass('overlay-active');
+                hamburger.removeClass('active');
+                $('body').css('overflow', 'auto');
+            });
+            
+            // Close mobile menu when clicking on menu items (for better UX)
+            $('.mobile-menu a').on('click', function() {
+                if (!$(this).parent().hasClass('menu-item-has-children')) {
+                    container.removeClass('inside');
+                    wrapper.removeClass('overlay-active');
+                    hamburger.removeClass('active');
+                    $('body').css('overflow', 'auto');
+                }
+            });
+            
+            // Close mobile menu on escape key
+            $(document).on('keydown', function(e) {
+                if (e.keyCode === 27 && container.hasClass('inside')) {
+                    container.removeClass('inside');
+                    wrapper.removeClass('overlay-active');
+                    hamburger.removeClass('active');
+                    $('body').css('overflow', 'auto');
+                }
             });
         };
         headermobileAside();
@@ -58,25 +98,26 @@
         	mobile-menu
         --------------------- */
         var $offCanvasNav = $('.mobile-menu'),
-            $offCanvasNavSubMenu = $offCanvasNav.find('.dropdown');
-        /*Add Toggle Button With Off Canvas Sub Menu*/
-        $offCanvasNavSubMenu.parent().prepend('<span class="menu-expand"><i></i></span>');
+            $offCanvasNavSubMenu = $offCanvasNav.find('.menu-item-has-children');
+        
         /*Close Off Canvas Sub Menu*/
-        $offCanvasNavSubMenu.slideUp();
+        $offCanvasNavSubMenu.find('.sub-menu').slideUp();
+        
         /*Category Sub Menu Toggle*/
-        $offCanvasNav.on('click', 'li a, li .menu-expand', function(e) {
+        $offCanvasNav.on('click', '.menu-item-has-children > a', function(e) {
             var $this = $(this);
-            if (($this.parent().attr('class').match(/\b(menu-item-has-children|has-children|has-sub-menu)\b/)) && ($this.attr('href') === '#' || $this.hasClass('menu-expand'))) {
-                e.preventDefault();
-                if ($this.siblings('ul:visible').length) {
-                    $this.parent('li').removeClass('active');
-                    $this.siblings('ul').slideUp();
-                } else {
-                    $this.parent('li').addClass('active');
-                    $this.closest('li').siblings('li').removeClass('active').find('li').removeClass('active');
-                    $this.closest('li').siblings('li').find('ul:visible').slideUp();
-                    $this.siblings('ul').slideDown();
-                }
+            var $parent = $this.parent();
+            var $subMenu = $this.siblings('.sub-menu');
+            
+            e.preventDefault();
+            
+            if ($subMenu.is(':visible')) {
+                $parent.removeClass('active');
+                $subMenu.slideUp();
+            } else {
+                $parent.addClass('active');
+                $offCanvasNavSubMenu.not($parent).removeClass('active').find('.sub-menu').slideUp();
+                $subMenu.slideDown();
             }
         });
 
